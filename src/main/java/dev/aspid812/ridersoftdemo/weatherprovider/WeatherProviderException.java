@@ -1,4 +1,4 @@
-package dev.aspid812.ridersoftdemo;
+package dev.aspid812.ridersoftdemo.weatherprovider;
 
 public class WeatherProviderException extends Exception {
     int statusCode;

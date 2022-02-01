@@ -1,4 +1,4 @@
-package dev.aspid812.ridersoftdemo;
+package dev.aspid812.ridersoftdemo.weatherprovider;
 
 import lombok.Value;
 
