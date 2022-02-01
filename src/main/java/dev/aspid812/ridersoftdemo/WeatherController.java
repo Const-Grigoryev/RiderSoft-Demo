@@ -9,7 +9,7 @@ public class WeatherController {
 
     @GetMapping("/weather")
     @ResponseBody
-    public String getWeather() {
-        return "Здесь могла быть ваша реклама";
+    public Weather getWeather() {
+        return new Weather(451);
     }
 }
