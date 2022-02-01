@@ -6,13 +6,12 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
 
-public class YandexWeatherProvider {
+public class YandexWeatherProvider implements WeatherProvider {
 
     private static final URI MAIN_PAGE_URI = URI.create("https://yandex.ru");
 
@@ -69,7 +68,8 @@ public class YandexWeatherProvider {
     }
 
 
-    Weather getWeather(long timeout) throws WeatherProviderException, IOException, InterruptedException {
+    @Override
+    public Weather getWeather(long timeout) throws WeatherProviderException, IOException, InterruptedException {
         var mainPageContent = getMainPage(timeout);
         return extractWeather(mainPageContent);
     }
