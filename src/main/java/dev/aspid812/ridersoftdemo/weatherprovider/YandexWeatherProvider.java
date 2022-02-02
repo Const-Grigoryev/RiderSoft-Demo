@@ -16,21 +16,16 @@ public class YandexWeatherProvider implements WeatherProvider {
     private static final URI MAIN_PAGE_URI = URI.create("https://yandex.ru");
 
     private static final Pattern WEATHER_TEMP_PATTERN
-            = Pattern.compile("<div class='weather__temp'>(?<temperature>[−+]?\\d+)°</div>");
+            = Pattern.compile("<div class='weather__temp'>(?<temperature>.*?)</div>");
 
 
-    static double extractTemperature(String input) {
+    static String extractTemperature(String input) {
         var matcher = WEATHER_TEMP_PATTERN.matcher(input);
         if (matcher.find()) {
-            var temperature = matcher.group("temperature");
-
-            // Yandex uses nifty minus sign, which Double.parseDouble() can't understand
-            temperature = temperature.replace('−', '-');
-
-            return Double.parseDouble(temperature);
+            return matcher.group("temperature");
         }
         else {
-            return Double.NaN;
+            return "n/a";
         }
     }
 

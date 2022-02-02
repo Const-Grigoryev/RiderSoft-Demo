@@ -4,5 +4,5 @@ import lombok.Value;
 
 @Value
 public class Weather {
-    double temperature;
+    String temperature;
 }
